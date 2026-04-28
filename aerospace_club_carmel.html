@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aerospace Club | Carmel High School</title>
+  <meta name="description" content="Carmel High School Aerospace Club is a student-led engineering team building ambitious aerospace projects, including RegenCat, a regeneratively cooled liquid-fueled rocket engine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060c16;
+      --bg-soft: #0b1526;
+      --panel: rgba(14, 28, 48, 0.88);
+      --panel-2: rgba(11, 21, 38, 0.94);
+      --text: #edf4ff;
+      --muted: #b4c3dc;
+      --line: rgba(255,255,255,0.09);
+      --accent: #78b9ff;
+      --accent-2: #a7d4ff;
+      --glow: rgba(120, 185, 255, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(79, 133, 207, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(130, 168, 235, 0.10), transparent 28%),
+        linear-gradient(180deg, #040911 0%, #08111f 38%, #091523 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .narrow { width: min(800px, 92%); margin: 0 auto; }
+    .center { text-align: center; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 12, 22, 0.78);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #07121f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 30px var(--glow);
+    }
+
+    .brand-title { font-size: 1rem; font-weight: 800; }
+    .brand-subtitle { font-size: 0.86rem; color: var(--muted); }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .hero {
+      padding: 92px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      max-width: 11ch;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 65ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .panel, .card, .action-box {
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.24);
+    }
+
+    .panel {
+      padding: 26px;
+    }
+
+    .stat + .stat {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .stat-value {
+      display: block;
+      margin-top: 5px;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.97;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    .button.primary {
+      color: #05101d;
+      background: linear-gradient(135deg, var(--accent), #d0e7ff);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section.alt {
+      background: rgba(255,255,255,0.025);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.16rem;
+    }
+
+    .action-box {
+      padding: 32px;
+      margin-top: 24px;
+    }
+
+    .action-box p {
+      margin-top: 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .contact-card {
+      padding: 22px;
+    }
+
+    .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 1.08rem;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    .small-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .cards, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark">AC</div>
+        <div>
+          <div class="brand-title">Aerospace Club</div>
+          <div class="brand-subtitle">Carmel High School</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#project">Project</a>
+        <a href="#pdr">PDR</a>
+        <a href="#sponsor">Sponsor Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Student-led aerospace engineering • propulsion • design reviews</p>
+          <h1>Building advanced rocketry in high school.</h1>
+          <p class="hero-text">
+            Aerospace Club at Carmel High School is a project-based engineering team focused on giving students the chance to take on ambitious, technically demanding aerospace work. Through hands-on design, testing, research, and community outreach, we aim to create a space where students can build real systems, grow as engineers, and pursue challenges well beyond the classroom.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://tinyurl.com/4frfzetc" target="_blank" rel="noopener">View PDR Slides</a>
+            <a class="button secondary" href="#sponsor">Sponsor Our Team</a>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="stat">
+            <span class="stat-label">Featured project</span>
+            <span class="stat-value">RegenCat liquid-fueled rocket</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Core focus</span>
+            <span class="stat-value">Student-built regenerative cooling and liquid propulsion development</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Support can help fund</span>
+            <span class="stat-value">Materials, machining, testing hardware, safety equipment, electronics, and documentation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="narrow">
+        <h2>About the club</h2>
+        <p>
+          Aerospace Club is a student-led, project-based program at Carmel High School built around the idea that students learn best by tackling real engineering challenges. Our club brings together students who want more than simple demonstrations or classroom labs. We focus on creative, rigorous aerospace projects that require design thinking, technical documentation, iteration, teamwork, and disciplined problem solving.
+        </p>
+        <p>
+          In addition to hands-on engineering, our team values outreach and community engagement. We want to help make aerospace and engineering more accessible to other students while building a culture of curiosity, ambition, and technical excellence. Our goal is not just to complete impressive projects, but to create meaningful opportunities for students to grow as builders, leaders, and future engineers.
+        </p>
+      </div>
+    </section>
+
+    <section id="project" class="section alt">
+      <div class="container">
+        <h2>RegenCat liquid-fueled rocket</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>What we are building</h3>
+            <p>
+              RegenCat is our liquid propulsion project centered on a regeneratively cooled rocket engine. The program involves propulsion system design, thermal considerations, manufacturing strategy, technical review work, and a structured engineering process modeled after real aerospace development.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Why it stands out</h3>
+            <p>
+              This project pushes students into serious systems engineering by requiring careful analysis, design tradeoffs, documentation, safety planning, and clear technical communication. It is the type of challenge that turns interest in aerospace into real engineering experience.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Why sponsorship matters</h3>
+            <p>
+              Sponsorship helps us move from concepts and reviews into real progress by supporting critical needs like materials, machining, instrumentation, testing equipment, hardware, and safe development infrastructure for a high-level student engineering program.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pdr" class="section">
+      <div class="narrow center">
+        <h2>Preliminary Design Review</h2>
+        <p>
+          Our Preliminary Design Review outlines the current state of the RegenCat project, including design direction, engineering considerations, and development goals.
+        </p>
+        <div class="action-box">
+          <p><strong>Explore our PDR materials</strong></p>
+          <a class="button primary" href="https://tinyurl.com/4frfzetc" target="_blank" rel="noopener">Open the PDR Slides</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsor" class="section alt">
+      <div class="narrow center">
+        <h2>Sponsor us</h2>
+        <p>
+          We are looking for sponsors who want to invest in ambitious student engineering. Support from companies, organizations, and community partners can directly help our team continue developing advanced aerospace projects and give students access to opportunities that would otherwise be out of reach.
+        </p>
+        <div class="action-box">
+          <p>
+            Interested in sponsoring Aerospace Club or supporting the RegenCat project? Please reach out by email and we can share more about our work, needs, and sponsorship opportunities.
+          </p>
+          <a class="button primary" href="mailto:omarassaf0509@gmail.com?subject=Aerospace%20Club%20Sponsorship">Contact Us About Sponsorship</a>
+          <p class="small-note">We welcome conversations with local businesses, technical mentors, aerospace supporters, and community partners.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="center">Contact</h2>
+        <div class="contact-grid">
+          <div class="panel contact-card">
+            <span class="label">Email</span>
+            <div class="value"><a href="mailto:omarassaf0509@gmail.com">omarassaf0509@gmail.com</a></div>
+          </div>
+          <div class="panel contact-card">
+            <span class="label">Phone</span>
+            <div class="value"><a href="tel:3178642688">(317) 864-2688</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div>
+        <strong>Aerospace Club</strong><br />
+        Carmel High School<br />
+        Student-led aerospace engineering
+      </div>
+      <div>
+        RegenCat liquid-fueled rocket project
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
